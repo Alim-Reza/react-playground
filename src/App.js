@@ -4,7 +4,7 @@ import Timer from './Timer/Timer.js';
 import CheckboxComponent from './CheckboxComponent/CheckboxComponent.js';
 import TreatManager from './TreatManager/TreatManager.js';
 import FlashyScroll from './FlashyScroll/FlashyScroll.jsx';
-import Navbar from './Navbar.js';
+import Navbar from './Navbar/Navbar.js';
 
 export default function App() {
   return (
@@ -16,7 +16,7 @@ export default function App() {
       {/* <TreatManager /> */}
       {/* <FlashyScroll /> */}
       {/* <FixButton /> */}
-      <Timer />
+      {/* <Timer /> */}
     </div>
   );
 }
