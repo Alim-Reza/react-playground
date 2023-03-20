@@ -46,7 +46,7 @@ export default function OldTimer() {
     return () => {
       clearInterval(tradeRequestApprovalCountDownInterval);
     };
-  }, [hiddenTime, visibleTime]);
+  }, [hiddenTime, visibleTime, deductLostTime]);
 
   const secondToHHMMSS = (seconds) => {
     return new Date(seconds * 1000).toISOString().substring(11, 11 + 8);
