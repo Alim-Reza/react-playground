@@ -59,7 +59,7 @@ export default function OldTimer({ showHourValue }) {
   //   };
   // }, []);
   // ====================================
-  const [seconds, setSeconds] = useState(1000);
+  const [seconds, setSeconds] = useState(10);
 
   const [visibleTime, setVisibleTime] = useState(new Date());
   const [hiddenTime, setHiddenTime] = useState(new Date());
