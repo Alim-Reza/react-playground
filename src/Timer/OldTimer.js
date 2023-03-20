@@ -27,15 +27,37 @@ export default function OldTimer({ showHourValue }) {
   }, []);
 
   useLayoutEffect(() => {
-    let whenVisibleDeductOnePerSecond = setInterval(() => {
+    let tradeRequestApprovalCountDownInterval = setInterval(() => {
       if (document.visibilityState === 'visible') {
-        setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
+        if (deductLostTime) {
+          setSeconds((prev) => {
+            return prev > 0
+              ? prev - Math.round((visibleTime - hiddenTime) / 1000)
+              : prev;
+          });
+          setDeductLostTime(false);
+        } else {
+          setSeconds((prev) => {
+            return prev > 0 ? prev - 1 : prev;
+          });
+        }
       }
     }, 1000);
     return () => {
-      clearInterval(whenVisibleDeductOnePerSecond);
+      clearInterval(tradeRequestApprovalCountDownInterval);
     };
-  }, []);
+  }, [visibleTime, hiddenTime, deductLostTime]);
+
+  // useLayoutEffect(() => {
+  //   let whenVisibleDeductOnePerSecond = setInterval(() => {
+  //     if (document.visibilityState === 'visible') {
+  //       setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
+  //     }
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(whenVisibleDeductOnePerSecond);
+  //   };
+  // }, []);
 
   useEffect(() => {}, []);
 
