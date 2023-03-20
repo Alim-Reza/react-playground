@@ -1,6 +1,64 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 export default function OldTimer({ showHourValue }) {
+  // const [seconds, setSeconds] = useState(1000);
+
+  // const [visibleTime, setVisibleTime] = useState(new Date());
+  // const [hiddenTime, setHiddenTime] = useState(new Date());
+  // const [deductLostTime, setDeductLostTime] = useState(false);
+
+  // const onVisibilityChange = () => {
+  //   if (document.visibilityState === 'visible') {
+  //     const visibleTimeVar = new Date();
+  //     console.log('tab visile on => ', visibleTimeVar);
+  //     setVisibleTime(new Date());
+  //   } else {
+  //     const hiddenTimeVar = new Date();
+  //     console.log('tab HIDDEN on => ', hiddenTimeVar);
+  //     setHiddenTime(new Date());
+  //     setDeductLostTime(true);
+  //   }
+  // };
+
+  // useLayoutEffect(() => {
+  //   document.addEventListener('visibilitychange', onVisibilityChange);
+  //   return () =>
+  //     document.removeEventListener('visibilitychange', onVisibilityChange);
+  // }, []);
+
+  // useLayoutEffect(() => {
+  //   let tradeRequestApprovalCountDownInterval = setInterval(() => {
+  //     if (document.visibilityState === 'visible') {
+  //       if (deductLostTime) {
+  //         setSeconds((prev) => {
+  //           return prev > 0
+  //             ? prev - Math.round((visibleTime - hiddenTime) / 1000)
+  //             : prev;
+  //         });
+  //         setDeductLostTime(false);
+  //       } else {
+  //         setSeconds((prev) => {
+  //           return prev > 0 ? prev - 1 : prev;
+  //         });
+  //       }
+  //     }
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(tradeRequestApprovalCountDownInterval);
+  //   };
+  // }, [visibleTime, hiddenTime, deductLostTime]);
+  // =============================
+  // useLayoutEffect(() => {
+  //   let whenVisibleDeductOnePerSecond = setInterval(() => {
+  //     if (document.visibilityState === 'visible') {
+  //       setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
+  //     }
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(whenVisibleDeductOnePerSecond);
+  //   };
+  // }, []);
+  // ====================================
   const [seconds, setSeconds] = useState(1000);
 
   const [visibleTime, setVisibleTime] = useState(new Date());
@@ -10,12 +68,10 @@ export default function OldTimer({ showHourValue }) {
   const onVisibilityChange = () => {
     if (document.visibilityState === 'visible') {
       const visibleTimeVar = new Date();
-      console.log('tab visile on => ', visibleTimeVar);
-      setVisibleTime(new Date());
+      setVisibleTime(visibleTimeVar);
     } else {
       const hiddenTimeVar = new Date();
-      console.log('tab HIDDEN on => ', hiddenTimeVar);
-      setHiddenTime(new Date());
+      setHiddenTime(hiddenTimeVar);
       setDeductLostTime(true);
     }
   };
@@ -30,36 +86,18 @@ export default function OldTimer({ showHourValue }) {
     let tradeRequestApprovalCountDownInterval = setInterval(() => {
       if (document.visibilityState === 'visible') {
         if (deductLostTime) {
-          setSeconds((prev) => {
-            return prev > 0
-              ? prev - Math.round((visibleTime - hiddenTime) / 1000)
-              : prev;
-          });
+          const timeDiff = Math.round((new Date() - hiddenTime) / 1000);
+          setSeconds((prev) => (prev > timeDiff ? prev - timeDiff : prev));
           setDeductLostTime(false);
         } else {
-          setSeconds((prev) => {
-            return prev > 0 ? prev - 1 : prev;
-          });
+          setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
         }
       }
     }, 1000);
     return () => {
       clearInterval(tradeRequestApprovalCountDownInterval);
     };
-  }, [visibleTime, hiddenTime, deductLostTime]);
-
-  // useLayoutEffect(() => {
-  //   let whenVisibleDeductOnePerSecond = setInterval(() => {
-  //     if (document.visibilityState === 'visible') {
-  //       setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
-  //     }
-  //   }, 1000);
-  //   return () => {
-  //     clearInterval(whenVisibleDeductOnePerSecond);
-  //   };
-  // }, []);
-
-  useEffect(() => {}, []);
+  }, [hiddenTime, deductLostTime]);
 
   const secondToHHMMSS = (seconds) => {
     if (showHourValue) {
