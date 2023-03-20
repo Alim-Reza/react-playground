@@ -11,11 +11,11 @@ export default function OldTimer() {
     if (document.visibilityState === 'visible') {
       const visibleTimeVar = new Date();
       console.log('tab visile on => ', visibleTimeVar);
-      setVisibleTime(visibleTimeVar);
+      setVisibleTime(new Date());
     } else {
       const hiddenTimeVar = new Date();
       console.log('tab HIDDEN on => ', hiddenTimeVar);
-      setHiddenTime(hiddenTimeVar);
+      setHiddenTime(new Date());
       setDeductLostTime(true);
     }
   };
