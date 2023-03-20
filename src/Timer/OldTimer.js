@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 
-export default function OldTimer() {
+export default function OldTimer({ showHourValue }) {
   const [seconds, setSeconds] = useState(1000);
 
   const [visibleTime, setVisibleTime] = useState(new Date());
@@ -26,30 +26,25 @@ export default function OldTimer() {
       document.removeEventListener('visibilitychange', onVisibilityChange);
   }, []);
 
-  useEffect(() => {
-    let tradeRequestApprovalCountDownInterval = setInterval(() => {
+  useLayoutEffect(() => {
+    let whenVisibleDeductOnePerSecond = setInterval(() => {
       if (document.visibilityState === 'visible') {
-        if (deductLostTime) {
-          setSeconds((prev) => {
-            return prev > 0
-              ? prev - Math.round((visibleTime - hiddenTime) / 1000)
-              : prev;
-          });
-          setDeductLostTime(false);
-        } else {
-          setSeconds((prev) => {
-            return prev > 0 ? prev - 1 : prev;
-          });
-        }
+        setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
       }
     }, 1000);
     return () => {
-      clearInterval(tradeRequestApprovalCountDownInterval);
+      clearInterval(whenVisibleDeductOnePerSecond);
     };
-  }, [visibleTime, hiddenTime, deductLostTime]);
+  }, []);
+
+  useEffect(() => {}, []);
 
   const secondToHHMMSS = (seconds) => {
-    return new Date(seconds * 1000).toISOString().substring(11, 11 + 8);
+    if (showHourValue) {
+      return new Date(seconds * 1000).toISOString().substring(11, 11 + 8);
+    } else {
+      return new Date(seconds * 1000).toISOString().substring(14, 14 + 5);
+    }
   };
 
   return (
@@ -85,3 +80,24 @@ export default function OldTimer() {
     </>
   );
 }
+// useEffect(() => {
+//   let tradeRequestApprovalCountDownInterval = setInterval(() => {
+//     if (document.visibilityState === 'visible') {
+//       if (deductLostTime) {
+//         setSeconds((prev) => {
+//           return prev > 0
+//             ? prev - Math.round((visibleTime - hiddenTime) / 1000)
+//             : prev;
+//         });
+//         setDeductLostTime(false);
+//       } else {
+//         setSeconds((prev) => {
+//           return prev > 0 ? prev - 1 : prev;
+//         });
+//       }
+//     }
+//   }, 1000);
+//   return () => {
+//     clearInterval(tradeRequestApprovalCountDownInterval);
+//   };
+// }, [visibleTime, hiddenTime, deductLostTime]);
