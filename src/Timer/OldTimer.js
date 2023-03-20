@@ -32,7 +32,7 @@ export default function OldTimer() {
         if (deductLostTime) {
           setSeconds((prev) => {
             return prev > 0
-              ? prev - Math.abs((visibleTime - hiddenTime) / 1000)
+              ? prev - Math.round((visibleTime - hiddenTime) / 1000)
               : prev;
           });
           setDeductLostTime(false);
@@ -55,10 +55,25 @@ export default function OldTimer() {
   return (
     <>
       <p>
-        <strong className="text-red">{visibleTime.toLocaleTimeString()}</strong>
+        <strong className="text-red">
+          visibleTime: {visibleTime.toLocaleTimeString()}
+        </strong>
       </p>
       <p>
-        <strong className="text-red">{hiddenTime.toLocaleTimeString()}</strong>
+        <strong className="text-red">
+          hiddenTime: {hiddenTime.toLocaleTimeString()}
+        </strong>
+      </p>
+      <p>
+        <strong className="text-red">
+          difference: {visibleTime - hiddenTime}
+        </strong>
+      </p>
+      <p>
+        <strong className="text-red">
+          difference but in seconds:{' '}
+          {Math.round((visibleTime - hiddenTime) / 1000)}
+        </strong>
       </p>
       <p>
         difference is:{' '}
