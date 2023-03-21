@@ -18,7 +18,7 @@ export default function App() {
       {/* <FlashyScroll /> */}
       {/* <FixButton /> */}
       {/* <Timer /> */}
-      <OldTimer showHourValue={true} />
+      <OldTimer showHourValue={true} giveTimeInSecond={100} />
     </div>
   );
 }

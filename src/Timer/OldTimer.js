@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 
-export default function OldTimer({ showHourValue }) {
+export default function OldTimer({ showHourValue, giveTimeInSecond }) {
   // const [seconds, setSeconds] = useState(1000);
 
   // const [visibleTime, setVisibleTime] = useState(new Date());
@@ -59,7 +59,7 @@ export default function OldTimer({ showHourValue }) {
   //   };
   // }, []);
   // ====================================
-  const [seconds, setSeconds] = useState(100);
+  const [seconds, setSeconds] = useState(giveTimeInSecond * 1000);
 
   const [visibleTime, setVisibleTime] = useState(new Date());
   const [hiddenTime, setHiddenTime] = useState(new Date());
@@ -86,12 +86,12 @@ export default function OldTimer({ showHourValue }) {
     let tradeRequestApprovalCountDownInterval = setInterval(() => {
       if (document.visibilityState === 'visible') {
         if (deductLostTime) {
-          const timeDiff = (new Date() - hiddenTime) / 1000;
+          const timeDiff = new Date() - hiddenTime;
           // const timeDiff = Math.round((new Date() - hiddenTime) / 1000);
           setSeconds((prev) => (prev > timeDiff ? prev - timeDiff : 0));
           setDeductLostTime(false);
         } else {
-          setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
+          setSeconds((prev) => (prev > 0 ? prev - 1000 : prev));
         }
       }
     }, 1000);
@@ -102,9 +102,9 @@ export default function OldTimer({ showHourValue }) {
 
   const secondToHHMMSS = (seconds) => {
     if (showHourValue) {
-      return new Date(seconds * 1000).toISOString().substring(11, 11 + 8);
+      return new Date(seconds).toISOString().substring(11, 11 + 8);
     } else {
-      return new Date(seconds * 1000).toISOString().substring(14, 14 + 5);
+      return new Date(seconds).toISOString().substring(14, 14 + 5);
     }
   };
 
