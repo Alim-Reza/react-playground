@@ -87,7 +87,7 @@ export default function OldTimer({ showHourValue }) {
       if (document.visibilityState === 'visible') {
         if (deductLostTime) {
           const timeDiff = Math.round((new Date() - hiddenTime) / 1000);
-          setSeconds((prev) => (prev > timeDiff ? prev - timeDiff : prev));
+          setSeconds((prev) => (prev > timeDiff ? prev - timeDiff : 0));
           setDeductLostTime(false);
         } else {
           setSeconds((prev) => (prev > 0 ? prev - 1 : prev));
