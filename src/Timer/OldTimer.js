@@ -86,7 +86,8 @@ export default function OldTimer({ showHourValue }) {
     let tradeRequestApprovalCountDownInterval = setInterval(() => {
       if (document.visibilityState === 'visible') {
         if (deductLostTime) {
-          const timeDiff = Math.round((new Date() - hiddenTime) / 1000);
+          const timeDiff = (new Date() - hiddenTime) / 1000;
+          // const timeDiff = Math.round((new Date() - hiddenTime) / 1000);
           setSeconds((prev) => (prev > timeDiff ? prev - timeDiff : 0));
           setDeductLostTime(false);
         } else {
