@@ -1,41 +1,59 @@
-import React, { useState } from 'react';
-import './HoldAndPressButton.css';
+import React, { useState, useEffect, useRef } from 'react';
 
-const HoldAndPressButton = () => {
-  const [gradientPosition, setGradientPosition] = useState(0);
+function HoldAndPressButton() {
+  const [isHeldDown, setIsHeldDown] = useState(false);
+  const [transitionTime, setTransitionTime] = useState(0);
+  const timer = useRef();
+
+  useEffect(() => {
+    if (isHeldDown) {
+      const startTime = new Date().getTime();
+      timer.current = setInterval(() => {
+        const elapsed = new Date().getTime() - startTime;
+        if (elapsed >= 5000) {
+          clearInterval(timer.current);
+          alert('Time up!');
+          setTransitionTime(0);
+        } else {
+          const progress = (elapsed / 5000) * 100;
+          setTransitionTime(progress);
+        }
+      }, 50);
+    } else {
+      clearInterval(timer.current);
+      setTransitionTime(0);
+    }
+  }, [isHeldDown, timer]);
 
   const handleMouseDown = () => {
-    const interval = setInterval(() => {
-      setGradientPosition((prevPosition) => {
-        if (prevPosition < 100) {
-          return prevPosition + 1;
-        } else {
-          clearInterval(interval);
-          return prevPosition;
-        }
-      });
-    }, 10);
+    setIsHeldDown(true);
+    setTransitionTime(0);
   };
 
   const handleMouseUp = () => {
-    setGradientPosition(0);
+    setIsHeldDown(false);
+    if (transitionTime < 5000) {
+      setTransitionTime(0);
+    }
   };
 
-  const gradientStyle = {
-    background: `linear-gradient(to right, #E4A460 ${gradientPosition}%, #D2691E ${gradientPosition}%)`,
+  const buttonStyle = {
+    background: `linear-gradient(to right, red ${transitionTime}%, transparent 0%)`,
+    border: 'solid red 1px',
+    transition: 'background 0.05s linear',
+    padding: '10px 20px',
+    margin: '10px',
   };
 
   return (
     <button
-      className="Button"
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
+      style={buttonStyle}
     >
-      <span className="Button-label" style={gradientStyle}>
-        Click me!
-      </span>
+      Hold and Press Me
     </button>
   );
-};
+}
 
 export default HoldAndPressButton;
