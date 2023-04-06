@@ -7,6 +7,7 @@ import CheckboxComponent from './CheckboxComponent/CheckboxComponent.js';
 import TreatManager from './TreatManager/TreatManager.js';
 import FlashyScroll from './FlashyScroll/FlashyScroll.jsx';
 import Navbar from './Navbar/Navbar.js';
+import RegistrationForm from './RegistrationForm/RegistrationForm.js';
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
       {/* <FixButton /> */}
       {/* <Timer /> */}
       {/* <OldTimer showHourValue={true} giveTimeInSecond={100} /> */}
-      <HoldAndPressButton />
+      {/* <HoldAndPressButton /> */}
+      <RegistrationForm />
     </div>
   );
 }
