@@ -8,6 +8,7 @@ import TreatManager from './TreatManager/TreatManager.js';
 import FlashyScroll from './FlashyScroll/FlashyScroll.jsx';
 import Navbar from './Navbar/Navbar.js';
 import RegistrationForm from './RegistrationForm/RegistrationForm.js';
+import FileDownload from './FileDownload/FileDownload';
 
 export default function App() {
   return (
@@ -22,7 +23,12 @@ export default function App() {
       {/* <Timer /> */}
       {/* <OldTimer showHourValue={true} giveTimeInSecond={100} /> */}
       {/* <HoldAndPressButton /> */}
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
+      <FileDownload
+        url={
+          'https://www.startech.com.bd/image/cache/catalog/keyboard/rapoo/v700-8a/v700-8a-01-228x228.webp'
+        }
+      />
     </div>
   );
 }

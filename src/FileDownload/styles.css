@@ -1,0 +1,50 @@
+.wrapper-component {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(241 240 255 / var(--tw-bg-opacity)) !important;
+
+  border-radius: 12px !important;
+
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 300px !important;
+  display: flex !important;
+  box-sizing: border-box;
+}
+
+.left-parent-component {
+  gap: 10px !important;
+  align-items: center !important;
+  width: 80% !important;
+  display: flex !important;
+  box-sizing: border-box;
+}
+
+.truncate {
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+.left-component {
+  padding: 1.25rem !important;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(222 217 255 / var(--tw-bg-opacity)) !important;
+  border-top-left-radius: 12px !important;
+  border-bottom-left-radius: 12px !important;
+}
+
+.svg {
+  font-size: 18px !important;
+  box-sizing: border-box;
+  display: block;
+  vertical-align: middle;
+}
+
+.icon-anchor {
+  margin-right: 20px !important;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: inherit;
+  background-color: transparent;
+  touch-action: manipulation;
+}
