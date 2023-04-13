@@ -2,13 +2,63 @@ import React from 'react';
 import './styles.css';
 
 export default function FileDownload({ url }) {
-  function download(url) {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = url;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+  function download(fileUrl) {
+    // const a = document.createElement('a');
+    // a.href = url;
+    // a.download = url;
+    // document.body.appendChild(a);
+    // a.click();
+    // document.body.removeChild(a);
+    // const url = window.URL.createObjectURL(new Blob([blob]));
+    // const link = document.createElement('a');
+    // link.href = url;
+    // link.setAttribute('download', `image.png`);
+
+    // // Append to html link element page
+    // document.body.appendChild(link);
+
+    // // Start download
+    // link.click();
+
+    // // Clean up and remove the link
+    // link.parentNode.removeChild(link);
+
+    let fileName = url.split('/');
+    fileName = fileName[fileName.length - 1];
+
+    // fetch(fileUrl)
+    //   .then((response) => response.blob())
+    //   .then((blob) => {
+
+    //     const url = window.URL.createObjectURL(new Blob([blob]));
+    //     const link = document.createElement('a');
+    //     link.href = url;
+    //     link.setAttribute('download', fileName);
+    //     document.body.appendChild(link);
+    //     link.click();
+    //   })
+    //   .catch((error) => console.error(error));
+
+    // const link = document.createElement('a');
+    // link.href = fileUrl;
+    // link.setAttribute('download', fileName);
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', fileUrl);
+    xhr.responseType = 'blob';
+    xhr.onload = () => {
+      const url = window.URL.createObjectURL(xhr.response);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', fileName);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+    xhr.send();
   }
   return (
     <div className="wrapper-component">
@@ -39,7 +89,7 @@ export default function FileDownload({ url }) {
         className="icon-anchor"
         // href="https://www.startech.com.bd/image/cache/catalog/keyboard/rapoo/v700-8a/v700-8a-01-228x228.webp"
         // download
-        onClick={download}
+        onClick={() => download(url)}
       >
         <svg
           stroke="currentColor"

@@ -26,7 +26,7 @@ export default function App() {
       {/* <RegistrationForm /> */}
       <FileDownload
         url={
-          'https://www.startech.com.bd/image/cache/catalog/keyboard/rapoo/v700-8a/v700-8a-01-228x228.webp'
+          'https://s3.ap-northeast-2.amazonaws.com/new-commerce-dev-new/dev/admin-panel/product/attachment99dc36ce-8b1b-4888-b269-364af9d83a3600613672-b0e7-4006-8f72-dbb82d2eee52.pptx'
         }
       />
     </div>
