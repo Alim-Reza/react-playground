@@ -14,7 +14,7 @@ const ShakeButton = () => {
 
   const handleButtonClick = () => {
     setIsShaking(true);
-    setTimeout(() => setIsShaking(false), 500);
+    setTimeout(() => setIsShaking(false), 5000);
   };
 
   return (
