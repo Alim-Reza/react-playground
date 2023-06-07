@@ -11,6 +11,7 @@ import FileDownload from './FileDownload/FileDownload';
 import ShakeButton from './ShakeButton/ShakeButton';
 import ProgressBarDiv from './ShakeButton/ProgressBarDiv';
 import BookList from './DataFetch/BookList';
+import FetchComponent from './FetchComponent/FetchComponent.js';
 
 export default function App() {
   return (
@@ -25,7 +26,8 @@ export default function App() {
       {/* <RegistrationForm /> */}
       {/* <ShakeButton /> */}
       {/* <ProgressBarDiv /> */}
-      <BookList />
+      {/* <BookList /> */}
+      <FetchComponent />
       {/* <FileDownload
         url={
           'https://s3.ap-northeast-2.amazonaws.com/new-commerce-dev-new/dev/admin-panel/product/attachment99dc36ce-8b1b-4888-b269-364af9d83a3600613672-b0e7-4006-8f72-dbb82d2eee52.pptx'
