@@ -12,15 +12,17 @@ import ShakeButton from './ShakeButton/ShakeButton';
 import ProgressBarDiv from './ShakeButton/ProgressBarDiv';
 import BookList from './DataFetch/BookList';
 import FetchComponent from './FetchComponent/FetchComponent.js';
+import TransitionComponent from './TransitionComponent/TransitionComponent.js';
 
 export default function App() {
   return (
     <div>
+      <TransitionComponent />
       {/* <Navbar /> */}
       {/* <CheckboxComponent /> */}
       {/* <FlashyScroll /> */}
       {/* <FixButton /> */}
-      <Timer />
+      {/* <Timer /> */}
       {/* <OldTimer showHourValue={true} giveTimeInSecond={100} /> */}
       {/* <HoldAndPressButton /> */}
       {/* <RegistrationForm /> */}

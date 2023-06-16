@@ -1,0 +1,20 @@
+.collapsible-text p {
+  overflow: hidden;
+  max-height: 60px; /* Set the desired height for collapsed text */
+  transition: max-height 0.3s ease;
+}
+.collapsed-text p {
+  transition: max-height 0.3s ease;
+}
+
+.collapsible-text.collapsed p {
+  overflow: unset;
+  white-space: nowrap;
+  word-wrap: break-word;
+  max-height: none;
+}
+
+.collapse-btn {
+  display: block;
+  margin-top: 10px; /* Adjust as needed */
+}
