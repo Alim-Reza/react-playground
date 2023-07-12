@@ -13,11 +13,17 @@ import ProgressBarDiv from './ShakeButton/ProgressBarDiv';
 import BookList from './DataFetch/BookList';
 import FetchComponent from './FetchComponent/FetchComponent.js';
 import TransitionComponent from './TransitionComponent/TransitionComponent.js';
+import DualScroll from './DualScroll/DualScroll.jsx';
+import ScrollToMiddle from './ScrollToMiddle/ScrollToMiddle.jsx';
+import ScrollToSpecificComponent from './ScrollToMiddle/ScrollToSpecificComponent.jsx';
 
 export default function App() {
   return (
     <div>
-      <TransitionComponent />
+      <ScrollToSpecificComponent />
+      {/* <ScrollToMiddle /> */}
+      {/* <DualScroll /> */}
+      {/* <TransitionComponent /> */}
       {/* <Navbar /> */}
       {/* <CheckboxComponent /> */}
       {/* <FlashyScroll /> */}
