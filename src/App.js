@@ -16,11 +16,12 @@ import TransitionComponent from './TransitionComponent/TransitionComponent.js';
 import DualScroll from './DualScroll/DualScroll.jsx';
 import ScrollToMiddle from './ScrollToMiddle/ScrollToMiddle.jsx';
 import ScrollToSpecificComponent from './ScrollToMiddle/ScrollToSpecificComponent.jsx';
-
+import WholeNumberInput from './WholeNumberInput/WholeNumberInput';
 export default function App() {
   return (
     <div>
-      <ScrollToSpecificComponent />
+      <WholeNumberInput />
+      {/* <ScrollToSpecificComponent /> */}
       {/* <ScrollToMiddle /> */}
       {/* <DualScroll /> */}
       {/* <TransitionComponent /> */}
