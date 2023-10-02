@@ -17,10 +17,24 @@ import DualScroll from './DualScroll/DualScroll.jsx';
 import ScrollToMiddle from './ScrollToMiddle/ScrollToMiddle.jsx';
 import ScrollToSpecificComponent from './ScrollToMiddle/ScrollToSpecificComponent.jsx';
 import WholeNumberInput from './WholeNumberInput/WholeNumberInput';
+import DialogueComponent from './DialogueComponent/DialogueComponent';
+import useConfirmationDialog from './DialogueComponent/useConfirmationDialog';
 export default function App() {
+  const { dialogOpen, handleOpenDialog, handleCloseDialog } =
+    useConfirmationDialog();
+
   return (
     <div>
-      <WholeNumberInput />
+      <button onClick={handleOpenDialog}>Open Dialog</button>
+      <DialogueComponent
+        title={'tumi ki sure?'}
+        buttonText={['ho', 'no']}
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        onYesClick={handleCloseDialog}
+      />
+
+      {/* <WholeNumberInput /> */}
       {/* <ScrollToSpecificComponent /> */}
       {/* <ScrollToMiddle /> */}
       {/* <DualScroll /> */}
