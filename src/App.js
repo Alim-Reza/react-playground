@@ -19,20 +19,22 @@ import ScrollToSpecificComponent from './ScrollToMiddle/ScrollToSpecificComponen
 import WholeNumberInput from './WholeNumberInput/WholeNumberInput';
 import DialogueComponent from './DialogueComponent/DialogueComponent';
 import useConfirmationDialog from './DialogueComponent/useConfirmationDialog';
+import LongLabel from './LongLabel/LongLabel';
 export default function App() {
   const { dialogOpen, handleOpenDialog, handleCloseDialog } =
     useConfirmationDialog();
 
   return (
     <div>
-      <button onClick={handleOpenDialog}>Open Dialog</button>
+      <LongLabel />
+      {/* <button onClick={handleOpenDialog}>Open Dialog</button> 
       <DialogueComponent
         title={'tumi ki sure?'}
         buttonText={['ho', 'no']}
         open={dialogOpen}
         onClose={handleCloseDialog}
         onYesClick={handleCloseDialog}
-      />
+      /> */}
 
       {/* <WholeNumberInput /> */}
       {/* <ScrollToSpecificComponent /> */}

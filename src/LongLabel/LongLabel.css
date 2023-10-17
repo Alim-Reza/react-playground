@@ -1,0 +1,13 @@
+.container {
+  width: 10em;
+  height: 2em;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5em;
+  white-space: nowrap;
+}
+
+.scrollable-content {
+  overflow: scroll;
+  overflow-y: hidden;
+}
