@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 10em;
   height: 2em;
   border: 1px solid black;
@@ -10,4 +10,30 @@
 .scrollable-content {
   overflow: scroll;
   overflow-y: hidden;
+} */
+.scroll-text-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.scroll-text {
+  display: inline-block;
+  animation: scrollText 10s linear infinite;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll-text.scrolling {
+  animation: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
