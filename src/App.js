@@ -20,13 +20,16 @@ import WholeNumberInput from './WholeNumberInput/WholeNumberInput';
 import DialogueComponent from './DialogueComponent/DialogueComponent';
 import useConfirmationDialog from './DialogueComponent/useConfirmationDialog';
 import LongLabel from './LongLabel/LongLabel';
+import DebouncedButton from './DebouncedButton/DebouncedButton';
+
 export default function App() {
   const { dialogOpen, handleOpenDialog, handleCloseDialog } =
     useConfirmationDialog();
 
   return (
     <div>
-      <LongLabel />
+      <DebouncedButton />
+      {/* <LongLabel /> */}
       {/* <button onClick={handleOpenDialog}>Open Dialog</button> 
       <DialogueComponent
         title={'tumi ki sure?'}
