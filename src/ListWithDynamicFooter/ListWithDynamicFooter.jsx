@@ -16,8 +16,16 @@ async function apiCall() {
   return await response.json();
 }
 export default function ListWithDynamicFooter() {
+  const [list, setList] = React.useState([]);
   apiCall().then((response) => {
-    console.log(response);
+    setList(response.data.ayahs);
   });
-  return <> hello</>;
+  return (
+    <>
+      {' '}
+      {list.map((x, key) => (
+        <div key={key}>{x.text}</div>
+      ))}
+    </>
+  );
 }
