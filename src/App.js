@@ -21,6 +21,7 @@ import DialogueComponent from './DialogueComponent/DialogueComponent';
 import useConfirmationDialog from './DialogueComponent/useConfirmationDialog';
 import LongLabel from './LongLabel/LongLabel';
 import DebouncedButton from './DebouncedButton/DebouncedButton';
+import ListWithDynamicFooter from './ListWithDynamicFooter/ListWithDynamicFooter';
 
 export default function App() {
   const { dialogOpen, handleOpenDialog, handleCloseDialog } =
@@ -28,7 +29,8 @@ export default function App() {
 
   return (
     <div>
-      <DebouncedButton />
+      <ListWithDynamicFooter />
+      {/* <DebouncedButton /> */}
       {/* <LongLabel /> */}
       {/* <button onClick={handleOpenDialog}>Open Dialog</button> 
       <DialogueComponent
