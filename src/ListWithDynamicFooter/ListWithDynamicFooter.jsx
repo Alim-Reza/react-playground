@@ -30,9 +30,10 @@ export default function ListWithDynamicFooter() {
         <div className="container">
           {list.map((x, index) => (
             <div>
-              {index} {x.text}
+              {index + 1}. {x.text}
             </div>
           ))}
+          <button className="btn">see more</button>
         </div>
       </div>
     </>

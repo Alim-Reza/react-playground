@@ -12,3 +12,12 @@
   flex-direction: column;
   gap: 1em;
 }
+
+.btn {
+  height: 1.5em;
+  width: auto;
+  border: 1px solid teal;
+  border-radius: 10px;
+  background-color: teal;
+  color: white;
+}
