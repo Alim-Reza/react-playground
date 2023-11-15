@@ -15,9 +15,11 @@
 
 .btn {
   height: 1.5em;
-  width: auto;
+  width: 5em;
   border: 1px solid teal;
   border-radius: 10px;
   background-color: teal;
   color: white;
+
+  margin: 1em;
 }
