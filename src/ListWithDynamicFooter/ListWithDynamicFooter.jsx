@@ -21,6 +21,9 @@ export default function ListWithDynamicFooter() {
       setList((prev) => [...prev, ...response.data.ayahs]);
     });
   }
+  function onclk() {
+    setPage((prev) => prev + 1);
+  }
   React.useEffect(() => {
     triggerApiCall(page);
   }, [page]);
@@ -33,7 +36,9 @@ export default function ListWithDynamicFooter() {
               {index + 1}. {x.text}
             </div>
           ))}
-          <button className="btn">see more</button>
+          <button className="btn" onClick={onclk}>
+            see more
+          </button>
         </div>
       </div>
     </>
