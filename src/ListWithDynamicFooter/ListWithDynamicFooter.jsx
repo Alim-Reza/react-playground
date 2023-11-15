@@ -25,6 +25,31 @@ export default function ListWithDynamicFooter() {
   function onclk() {
     setPage((prev) => prev + 1);
   }
+  function DropDown() {
+    return (
+      <div
+        style={{
+          padding: '1em',
+          display: 'flex',
+          gap: '2em',
+          justifyContent: 'flex-start',
+          paddingLeft: '0em',
+        }}
+      >
+        <label for="pageSize">Page Size:</label>
+        <select
+          name="pageSize"
+          value={size}
+          onChange={(event) => setSize(event.target.value)}
+          // onChange={(e) => console.log(e)}
+        >
+          {[...Array(10).keys()].map((i) => (
+            <option value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+      </div>
+    );
+  }
   React.useEffect(() => {
     triggerApiCall(page, size);
   }, [page]);
@@ -35,15 +60,7 @@ export default function ListWithDynamicFooter() {
   }, [size]);
   return (
     <>
-      <label for="pageSize">Page Size:</label>
-      <select name="pageSize" id="pageSize">
-        {[...Array(10).keys()].map((i) => (
-          <option value={i} onClick={() => alert(i)}>
-            {i}
-          </option>
-        ))}
-      </select>
-
+      <DropDown />
       <div className="wrapper">
         <div className="container">
           {list.map((x, index) => (
