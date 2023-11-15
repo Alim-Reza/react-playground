@@ -50,9 +50,9 @@ export default function ListWithDynamicFooter() {
       </div>
     );
   }
-  React.useEffect(() => {
-    triggerApiCall(page, size);
-  }, [page]);
+  // React.useEffect(() => {
+  //   triggerApiCall(page, size);
+  // }, [page]);
   React.useEffect(() => {
     setList([]);
     setPage(0);
@@ -69,9 +69,9 @@ export default function ListWithDynamicFooter() {
               {/* {x.text} */}
             </div>
           ))}
-          <button className="btn" onClick={onclk}>
+          {/* <button className="btn" onClick={onclk}>
             see more
-          </button>
+          </button> */}
         </div>
       </div>
     </>
