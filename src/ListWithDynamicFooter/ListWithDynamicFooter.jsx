@@ -1,4 +1,6 @@
 import React from 'react';
+import './ListWithDynamicFooter.css';
+
 async function apiCall() {
   var requestOptions = {
     method: 'GET',
@@ -6,13 +8,9 @@ async function apiCall() {
   };
 
   const response = await fetch(
-    'https://api.alquran.cloud/v1/juz/30/quran-uthmani?offset=0&limit=5',
+    'https://api.alquran.cloud/v1/juz/30/quran-uthmani?offset=0&limit=15',
     requestOptions
   );
-  // .then((response) => response.text())
-  // .then((result) => result)
-  // .catch((error) => error);
-
   return await response.json();
 }
 export default function ListWithDynamicFooter() {
@@ -22,10 +20,13 @@ export default function ListWithDynamicFooter() {
   });
   return (
     <>
-      {' '}
-      {list.map((x, key) => (
-        <div key={key}>{x.text}</div>
-      ))}
+      <div className="wrapper">
+        <div className="container">
+          {list.map((x, key) => (
+            <div key={key}>{x.text}</div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
